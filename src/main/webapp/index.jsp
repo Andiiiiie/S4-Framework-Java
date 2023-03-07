@@ -7,4 +7,3 @@
 <body>
     <h1><a href="/test">TEST</a></h1>
 </body>
-</html>
