@@ -3,6 +3,12 @@ package etu1938.framework;
 public class Mapping {
     String className;
     String Method;
+
+    public Mapping(String className,String method)
+    {
+        setClassName(className);
+        setMethod(method);
+    }
     public Mapping()
     {
 
