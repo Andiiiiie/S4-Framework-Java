@@ -1,5 +1,5 @@
-package objets;
-import annotations.MappingUrl;
+package etu1938.framework.objets;
+import etu1938.framework.annotations.MappingUrl;
 
 public class Objet {
     public Objet()

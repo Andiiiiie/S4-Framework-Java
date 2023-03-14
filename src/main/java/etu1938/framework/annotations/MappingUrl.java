@@ -1,4 +1,4 @@
-package annotations;
+package etu1938.framework.annotations;
 
 import java.lang.annotation.Retention;
 import java.lang.annotation.RetentionPolicy;

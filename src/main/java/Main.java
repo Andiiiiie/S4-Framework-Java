@@ -1,13 +1,12 @@
-import annotations.MappingUrl;
+import etu1938.framework.annotations.MappingUrl;
 
 import java.io.File;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.Vector;
 
 public class Main {
     public static void main(String[] args) {
-        String path="/home/andie/IdeaProjects/S4-Framework-Java/src/main/java/objets";
+        String path="/home/andie/IdeaProjects/S4-Framework-Java/src/main/java/etu1938.framework.objets";
         Vector<String> liste=getClasses(path, "objets");
         for(String nom:liste)
         {

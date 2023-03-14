@@ -1,13 +1,12 @@
 package etu1938.framework.servlet;
 
-import annotations.MappingUrl;
+import etu1938.framework.annotations.MappingUrl;
 import etu1938.framework.Mapping;
 import javax.servlet.*;
 import javax.servlet.http.*;
 
 import java.io.File;
 import java.io.IOException;
-import java.lang.annotation.Annotation;
 import java.lang.reflect.Method;
 import java.util.HashMap;
 import java.util.Vector;
@@ -19,7 +18,7 @@ public class FrontServlet extends HttpServlet {
     @Override
     public void init() throws ServletException {
         HashMap<String, Mapping> map = new HashMap<String, Mapping>();
-        String path="/home/andie/IdeaProjects/S4-Framework-Java/src/main/java/objets";
+        String path="/home/andie/IdeaProjects/S4-Framework-Java/src/main/java/etu1938.framework.objets";
         Vector<String> liste=getClasses(path, "objets");
         for(String nom:liste)
         {
