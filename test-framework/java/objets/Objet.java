@@ -1,4 +1,5 @@
 package objets;
+import etu1938.framework.ModelView;
 import etu1938.framework.annotations.MappingUrl;
 
 public class Objet {
@@ -7,10 +8,9 @@ public class Objet {
 
     }
 
-
     @MappingUrl(method = "descri")
-    public void description()
+    public ModelView description()
     {
-        System.out.println("aona.Objet description");
+        return new ModelView("page.jsp");
     }
 }
