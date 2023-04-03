@@ -4,6 +4,7 @@ tomcat_webapps="/home/andie/tomcat/webapps"
 # Compile framework
 javac -cp "temp" -d temp framework/java/etu1938/framework/annotations/MappingUrl.java
 javac -cp "temp" -d temp framework/java/etu1938/framework/Mapping.java
+javac -cp "temp" -d temp framework/java/etu1938/framework/ModelView.java
 javac -cp "temp:$tomcat_libs" -d temp framework/java/etu1938/framework/servlet/FrontServlet.java
 # Framework Class -> jar
 jar --create --verbose --file test-framework/webapp/WEB-INF/lib/framework.jar -C temp .
@@ -18,4 +19,3 @@ javac -cp "temp/WEB-INF/classes:$framework_jar" -d temp/WEB-INF/classes test-fra
 # Project Class -> war
 jar --create --verbose --file "$tomcat_webapps"/framework.war -C temp .
 rm -rf temp
-

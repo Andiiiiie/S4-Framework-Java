@@ -1,5 +1,6 @@
 package etu1938.framework.servlet;
 
+import etu1938.framework.ModelView;
 import etu1938.framework.annotations.MappingUrl;
 import etu1938.framework.Mapping;
 import javax.servlet.*;
@@ -71,9 +72,21 @@ public class FrontServlet extends HttpServlet {
     private void processRequest(HttpServletRequest request,HttpServletResponse response) throws IOException {
         String lien= String.valueOf(request.getRequestURL());
         String[] mots=lien.split("/",5);
-        response.getWriter().println(mots[mots.length-1]);
-        response.getWriter().println(getMappingUrls().get(mots[mots.length-1]).getClassName()+":"+getMappingUrls().get(mots[mots.length-1]).getMethod());
 
+        Mapping mapping = getMappingUrls().get(mots[mots.length-1]);
+        if(mapping == null) {
+            response.getWriter().println("404 Not Found");
+            return;
+        }
+        try {
+            Class<?> cl = Class.forName(mapping.getClassName());
+            Object o = cl.getDeclaredConstructor().newInstance();
+            Method m = cl.getDeclaredMethod(mapping.getMethod());
+            ModelView mv = (ModelView) m.invoke(o);
+            request.getRequestDispatcher(mv.getView()).forward(request, response);
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
     }
 
 
