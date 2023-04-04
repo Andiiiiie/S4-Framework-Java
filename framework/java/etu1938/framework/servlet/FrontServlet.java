@@ -10,6 +10,7 @@ import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.HashMap;
+import java.util.Map;
 import java.util.Vector;
 
 public class FrontServlet extends HttpServlet {
@@ -83,6 +84,12 @@ public class FrontServlet extends HttpServlet {
             Object o = cl.getDeclaredConstructor().newInstance();
             Method m = cl.getDeclaredMethod(mapping.getMethod());
             ModelView mv = (ModelView) m.invoke(o);
+            for(Map.Entry<String, Object> entry :mv.getData().entrySet()) {
+                String key = entry.getKey();
+                Object value = entry.getValue();
+                request.setAttribute(key,value);
+                // faire quelque chose avec la clé et la valeur
+            }
             request.getRequestDispatcher(mv.getView()).forward(request, response);
         } catch (Exception e) {
             throw new RuntimeException(e);
