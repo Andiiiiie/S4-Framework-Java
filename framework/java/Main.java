@@ -1,31 +1,15 @@
-import etu1938.framework.annotations.MappingUrl;
-
 import java.io.File;
 import java.lang.reflect.Method;
 import java.util.Vector;
 
 public class Main {
-    public static void main(String[] args) {
-        String path="/home/andie/IdeaProjects/S4-Framework-Java/src/main/java/etu1938.framework.objets";
-        Vector<String> liste=getClasses(path, "objets");
-        for(String nom:liste)
-        {
-            System.out.println("tato");
-            Class<?> cl= null;
-            try {
-                cl = Class.forName(nom);
-            } catch (ClassNotFoundException e) {
-                throw new RuntimeException(e);
-            }
-            Method[] methods= cl.getDeclaredMethods();
-            for (Method method:methods)
-            {
-                if(method.isAnnotationPresent(MappingUrl.class))
-                {
-                    System.out.println(method.getAnnotation(MappingUrl.class).method());
-                }
-            }
-        }
+    public static void main(String[] args) throws NoSuchMethodException {
+
+    }
+    public  static String getSetter(String attribut)
+    {
+        String capitalizedStr = attribut.substring(0, 1).toUpperCase() + attribut.substring(1);
+        return "set"+capitalizedStr;
     }
     public static Vector<String> getClasses(String path,String p)
     {

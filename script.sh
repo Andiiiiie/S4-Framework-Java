@@ -1,5 +1,6 @@
 tomcat_libs="/home/andie/tomcat/lib/*"
 tomcat_webapps="/home/andie/tomcat/webapps"
+project_name="test_framework"
 
 # Compile framework
 javac -cp "temp" -d temp framework/java/etu1938/framework/annotations/MappingUrl.java
@@ -12,10 +13,13 @@ rm -rf temp
 
 # War structure
 mkdir temp
-cp -r test-framework/webapp/* temp/
+cp -r "$project_name"/webapp/* temp/
 # Compile test
 framework_jar="temp/WEB-INF/lib/framework.jar"
-javac -cp "temp/WEB-INF/classes:$framework_jar" -d temp/WEB-INF/classes test-framework/java/objets/Objet.java
+    
+#Add classes
+javac -cp "temp/WEB-INF/classes:$framework_jar" -d temp/WEB-INF/classes test-framework/java/objets/*
+
 # Project Class -> war
-jar --create --verbose --file "$tomcat_webapps"/framework.war -C temp .
+jar --create --verbose --file "$tomcat_webapps"/"$project_name".war -C temp .
 rm -rf temp
