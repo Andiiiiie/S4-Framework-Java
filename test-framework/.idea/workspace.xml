@@ -7,13 +7,13 @@
     <list default="true" id="7378c8b7-dfb0-456c-aa52-66450d79bbc6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../framework/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/java/Main.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../framework/java/etu1938/framework/Mapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/java/etu1938/framework/Mapping.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../framework/java/etu1938/framework/annotations/MappingUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/java/etu1938/framework/annotations/MappingUrl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../framework/java/etu1938/framework/servlet/FrontServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/java/etu1938/framework/servlet/FrontServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../script.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/objets/Objet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/WEB-INF/lib/framework.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/WEB-INF/lib/framework.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/page.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -26,8 +26,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="Jsp File" />
         <option value="Class" />
+        <option value="Jsp File" />
       </list>
     </option>
   </component>
@@ -53,7 +53,7 @@
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "SHARE_PROJECT_CONFIGURATION_FILES": "true",
     "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/andie/IdeaProjects/S4-Framework-Java/test-framework",
+    "last_opened_file_path": "/home/andie/IdeaProjects/S4-Framework-Java",
     "node.js.detected.package.eslint": "true",
     "node.js.detected.package.tslint": "true",
     "node.js.selected.package.eslint": "(autodetect)",
@@ -85,6 +85,13 @@
       <workItem from="1683577145764" duration="9000" />
       <workItem from="1683577399605" duration="6855000" />
       <workItem from="1683620730467" duration="2562000" />
+      <workItem from="1684784523171" duration="347000" />
+      <workItem from="1684786371856" duration="2136000" />
+      <workItem from="1684833711753" duration="2047000" />
+      <workItem from="1686041168169" duration="6107000" />
+      <workItem from="1687807413044" duration="2568000" />
+      <workItem from="1687811371066" duration="611000" />
+      <workItem from="1687949391229" duration="579000" />
     </task>
     <servers />
   </component>

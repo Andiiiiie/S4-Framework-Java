@@ -9,4 +9,6 @@ import java.lang.annotation.Target;
 public @interface MappingUrl {
     String method();
 
+
+
 }
