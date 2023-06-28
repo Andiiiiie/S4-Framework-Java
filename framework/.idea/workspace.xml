@@ -6,9 +6,6 @@
   <component name="ChangeListManager">
     <list default="true" id="4e63acd2-0c0b-4347-a25f-f34d7a80372a" name="Changes" comment="sprint6: envoie objet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/etu1938/framework/Mapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/etu1938/framework/Mapping.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/etu1938/framework/annotations/MappingUrl.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/etu1938/framework/annotations/MappingUrl.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/etu1938/framework/servlet/FrontServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/etu1938/framework/servlet/FrontServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../script.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../test-framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../test-framework/.idea/workspace.xml" afterDir="false" />
@@ -49,23 +46,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/andie/Desktop/S4-Framework-Java-041eae306e2d773ecf2751f97a6045363fbd8592",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.0",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/andie/Desktop/S4-Framework-Java-041eae306e2d773ecf2751f97a6045363fbd8592&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Modules&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.0&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -114,6 +111,7 @@
       <workItem from="1687807451704" duration="2725000" />
       <workItem from="1687811384159" duration="1218000" />
       <workItem from="1687949389424" duration="502000" />
+      <workItem from="1687950257004" duration="7269000" />
     </task>
     <task id="LOCAL-00001" summary="sprint6: envoie objet">
       <created>1680602944674</created>

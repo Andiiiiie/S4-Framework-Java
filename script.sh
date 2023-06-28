@@ -4,6 +4,7 @@ tomcat_webapps="/home/andie/tomcat/webapps"
 # Compile framework
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotations/MappingUrl.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/Mapping.java
+javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/File_class.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/ModelView.java
 javac -parameters -cp "temp:$tomcat_libs" -d temp framework/java/etu1938/framework/servlet/FrontServlet.java
 # Framework Class -> jar
