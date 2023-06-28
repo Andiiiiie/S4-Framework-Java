@@ -11,6 +11,7 @@
       <change beforePath="$PROJECT_DIR$/../test-framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../test-framework/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../test-framework/java/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test-framework/java/objets/Objet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../test-framework/webapp/WEB-INF/lib/framework.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../test-framework/webapp/WEB-INF/lib/framework.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-framework/webapp/page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../test-framework/webapp/page.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -24,6 +25,7 @@
     <option name="RECENT_TEMPLATES">
       <list>
         <option value="Class" />
+        <option value="AnnotationType" />
       </list>
     </option>
   </component>
@@ -112,6 +114,7 @@
       <workItem from="1687811384159" duration="1218000" />
       <workItem from="1687949389424" duration="502000" />
       <workItem from="1687950257004" duration="7269000" />
+      <workItem from="1687966607910" duration="4239000" />
     </task>
     <task id="LOCAL-00001" summary="sprint6: envoie objet">
       <created>1680602944674</created>
