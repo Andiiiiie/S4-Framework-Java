@@ -4,14 +4,21 @@ import etu1938.framework.ModelView;
 import etu1938.framework.annotations.MappingUrl;
 import etu1938.framework.Mapping;
 import javax.servlet.*;
+import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
+import etu1938.framework.File_class;
+import java.io.*;
+import java.util.Collection;
+
 
 import java.io.File;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.lang.reflect.*;
 import java.util.*;
-
+import java.util.regex.Matcher;
+import java.util.regex.Pattern;
+@MultipartConfig
 public class FrontServlet extends HttpServlet {
     private HashMap<String, Mapping> MappingUrls;
 
@@ -92,47 +99,63 @@ public class FrontServlet extends HttpServlet {
     public Object casting(Class type,String string)
     {
         Object objet=null;
+        if (string != null && string.startsWith("multipart/form-data")) {
+            //traitement file
+            String fileName = null;
+            // Extraire le nom du fichier à partir du contenu
 
-        //regarder si cet objet a un constructeur qui recoit
-        try {
-            Constructor constructor=type.getConstructor(String.class);
-            objet=constructor.newInstance(string);
-        } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
-            try {
-                objet = type.getMethod("valueOf", String.class).invoke(type, string);
-            } catch (Exception ex) {
-                throw new RuntimeException(ex);
+            // Chercher le motif pour extraire le nom du fichier
+            String pattern = "filename=\"([^\"]+)\"";
+            Matcher matcher = Pattern.compile(pattern).matcher(string);
+
+            if (matcher.find()) {
+                fileName = matcher.group(1);
             }
 
+            // Convertir le contenu du fichier en un tableau de bytes
+            byte[] fileBytes = Base64.getDecoder().decode(string);
+
+            String source="source";
+            objet=new File_class(fileName,source,fileBytes);
         }
+        else
+        {
+            //regarder si cet objet a un constructeur qui recoit
+            try {
+                Constructor constructor=type.getConstructor(String.class);
+                objet=constructor.newInstance(string);
+            } catch (NoSuchMethodException | InstantiationException | IllegalAccessException | InvocationTargetException e) {
+                try {
+                    objet = type.getMethod("valueOf", String.class).invoke(type, string);
+                } catch (Exception ex) {
+                    throw new RuntimeException(ex);
+                }
+
+            }
+        }
+
         return objet;
     }
 
     private void processRequest(HttpServletRequest request,HttpServletResponse response) throws IOException {
-//        PrintWriter out=response.getWriter();
         String lien= String.valueOf(request.getRequestURL());
         String[] mots=lien.split("/",5);
 
         Mapping mapping = getMappingUrls().get(mots[mots.length-1]);
         if(mapping == null) {
             response.getWriter().println("404 Not Found");
-            //afficher tout les parametres
-
             return;
         }
         try {
             Class<?> cl = Class.forName(mapping.getClassName());
             Object o = cl.getDeclaredConstructor().newInstance();
-            //Method m = cl.getDeclaredMethod(mapping.getMethod());
             Method m=findMethodByName(cl,mapping.getMethod());
             Vector<String> liste_arguments=new Vector<>();
-            //if (m!= null) {
-                Parameter[] parameters = m.getParameters();
-                for (Parameter parameter : parameters) {
-                    String argumentName = parameter.getName();
-                    liste_arguments.add(argumentName);
-                }
-            //}
+            Parameter[] parameters = m.getParameters();
+            for (Parameter parameter : parameters) {
+                String argumentName = parameter.getName();
+                liste_arguments.add(argumentName);
+            }
 
 
             Object[] methodArgs = new Object[parameters.length];
@@ -154,8 +177,6 @@ public class FrontServlet extends HttpServlet {
                 }
                 if( liste_arguments.contains(attribut))
                 {
-//                    out.println("tatto \n");
-//                    out.println(attribut+"  "+ request.getParameter(attribut));
                     Class<?> type=null;
                     for (int i=0;i<parameters.length;i++)
                     {
@@ -168,12 +189,30 @@ public class FrontServlet extends HttpServlet {
                     methodArgs[nb]=this.casting(type,request.getParameter(attribut));
                     nb++;
                 }
-
             }
+            // Obtenir les fichiers téléchargés à partir de la requête
+            Collection<Part> parts = request.getParts();
+            // Parcourir les objets Part correspondant aux fichiers téléchargés
+            for (Part part : parts) {
+                // Obtenir le nom attribué au champ de fichier
+                String fieldName = part.getName();
+                String originalFileName = getFileName(part);
+                InputStream fileContent = part.getInputStream();
+                byte[] fileBytes = fileContent.readAllBytes();
+                String source="source";
+                File_class fileClass=new File_class(originalFileName,source,fileBytes);
+                if(isAttribute(cl,fieldName)) {
+                    Field field=cl.getDeclaredField(fieldName);
+                    Method temp=cl.getDeclaredMethod(getSetter(fieldName),field.getType());
 
-
-
-            // Construction du tableau d'arguments
+                    temp.invoke(o,fileClass);
+                }
+                else if(liste_arguments.contains(fieldName))
+                {
+                    methodArgs[nb]=fileClass;
+                }
+                fileContent.close();
+            }
 
 
 
@@ -181,8 +220,6 @@ public class FrontServlet extends HttpServlet {
             //envoyer donnees a la methode si il y en a
 
             ModelView mv = (ModelView) m.invoke(o,methodArgs);
-
-            //ModelView mv = (ModelView) m.invoke(o,arguements);
             for(Map.Entry<String, Object> entry :mv.getData().entrySet()) {
                 String key = entry.getKey();
                 Object value = entry.getValue();
@@ -191,116 +228,20 @@ public class FrontServlet extends HttpServlet {
             }
             request.getRequestDispatcher(mv.getView()).forward(request, response);
         } catch (Exception e) {
-//            out.println("tato");
             throw new RuntimeException(e);
         }
     }
 
-/*    private void processRequest(HttpServletRequest request,HttpServletResponse response) throws IOException {
-        PrintWriter out=response.getWriter();
-
-
-        String lien= String.valueOf(request.getRequestURL());
-        try {
-
-
-        String[] mots=lien.split("/",5);
-            out.println(lien+"    "+mots[mots.length-1]);
-        Mapping mapping = getMappingUrls().get(mots[mots.length-1]);
-        out.println(mapping.getClassName());
-        Map<String, String> map=new LinkedHashMap<>();
-
-        Class<?> cl = Class.forName(mapping.getClassName());
-        Object o = cl.getDeclaredConstructor().newInstance();
-
-        Method m = findMethodByName(cl,mapping.getMethod());
-
-        Enumeration<String> liste1=request.getParameterNames();
-        while (liste1.hasMoreElements())
-        {
-
-            String temp= liste1.nextElement();
-            out.println("temp "+temp);
-
-            if(isParameter(mapping,temp))
-            {
-                out.println("tato eee:  "+(String) request.getParameter(temp));
-                map.put(temp, (String) request.getParameter(temp));
+    private String getFileName(Part part) {
+        String contentDisposition = part.getHeader("content-disposition");
+        String[] elements = contentDisposition.split(";");
+        for (String element : elements) {
+            if (element.trim().startsWith("filename")) {
+                return element.substring(element.indexOf("=") + 1).trim().replace("\"", "");
             }
-
         }
-        if(mapping == null) {
-            response.getWriter().println("404 Not Found");
-            //afficher tout les parametres
-
-            return;
-        }
-
-
-
-
-
-
-
-            //get Parameter from form and call setters if object attribute
-            Enumeration<String> liste=request.getParameterNames();
-
-            while (liste.hasMoreElements())
-            {
-                String attribut=liste.nextElement();
-
-                out.println(attribut);
-                if(isAttribute(cl,attribut))
-                {
-                    Field field=cl.getDeclaredField(attribut);
-                    Method temp=cl.getDeclaredMethod(getSetter(attribut),field.getType());
-                    if (this.casting(field.getType(),request.getParameter(attribut))==null)
-                    {
-                        throw new RuntimeException("ERROR WHILE CASTING");
-                    }
-                    temp.invoke(o,this.casting(field.getType(),request.getParameter(attribut)));
-                }
-            }
-
-            out.println("hehe"+m.getName());
-            Parameter[] parameters = m.getParameters();
-            // Construction du tableau d'arguments
-            Object[] methodArgs = new Object[parameters.length];
-            List<Map.Entry<String, String>> entries = new ArrayList<>(map.entrySet());
-            out.println(entries.size()+"  size");
-
-
-            for (int i = 0; i < entries.size(); i++) {
-                Map.Entry<String, String> entry = entries.get(i);
-                int index = i + 1; // L'indice commence à 1
-
-            }
-            for (int i = 0; i < parameters.length; i++) {
-
-                out.println(parameters[i].getType()+"   valeur: "+entries.get(i).getValue());
-                methodArgs[i] = casting(parameters[i].getType(),entries.get(i).getValue());
-            }
-
-            //envoyer donnees a la methode si il y en a
-
-            ModelView mv = (ModelView) m.invoke(o,methodArgs);
-            for(Map.Entry<String, Object> entry :mv.getData().entrySet()) {
-                String key = entry.getKey();
-                Object value = entry.getValue();
-                request.setAttribute(key,value);
-                // faire quelque chose avec la clé et la valeur
-            }
-
-            request.getRequestDispatcher(mv.getView()).forward(request, response);
-            out.println("tsy maNDEHA");
-        } catch (Exception e) {
-            out.println("ato @ exception"+e.toString());
-           e.printStackTrace(out);
-        }
-    }*/
-
-
-
+        return "";
+    }
 
     private static Method findMethodByName(Class<?> clazz, String methodName) {
         Method[] methods = clazz.getDeclaredMethods();

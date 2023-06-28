@@ -1,5 +1,6 @@
 package objets;
 import etu1938.framework.ModelView;
+import etu1938.framework.File_class;
 import etu1938.framework.annotations.MappingUrl;
 
 import java.sql.Date;
@@ -27,6 +28,13 @@ public class Objet {
     {
         ModelView modelView=new ModelView("test_id.jsp");
         modelView.addItem("id",id);
+        return modelView;
+    }
+    @MappingUrl(method = "upload")
+    public  ModelView upload(File_class file)
+    {
+        ModelView modelView=new ModelView("test_id.jsp");
+        modelView.addItem("id",file.getName());
         return modelView;
     }
 
