@@ -6,23 +6,14 @@ import java.sql.Date;
 
 public class Objet {
 
-    Attribut attribut;
     Date date;
-
     Integer nombre;
     public Objet()
     {
 
     }
 
-    @MappingUrl(method = "descri")
-    public ModelView description()
-    {
-        this.setAttribut(new Attribut("haha"));
-        ModelView modelView=new ModelView("page.jsp");
-        modelView.addItem("test",this.getAttribut());
-        return modelView;
-    }
+
     @MappingUrl(method = "save")
     public ModelView save()
     {
@@ -31,13 +22,16 @@ public class Objet {
         return modelView;
     }
 
-    public Attribut getAttribut() {
-        return attribut;
+    @MappingUrl(method = "get")
+    public ModelView get(Integer id)
+    {
+        ModelView modelView=new ModelView("test_id.jsp");
+        modelView.addItem("id",id);
+        return modelView;
     }
 
-    public void setAttribut(Attribut attribut) {
-        this.attribut = attribut;
-    }
+
+
 
     public Date getDate() {
         return date;

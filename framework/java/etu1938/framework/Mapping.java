@@ -1,5 +1,8 @@
 package etu1938.framework;
 
+import java.util.List;
+import java.util.Vector;
+
 public class Mapping {
     String className;
     String Method;
@@ -12,6 +15,23 @@ public class Mapping {
     public Mapping()
     {
 
+    }
+
+    public static Vector<String> getAttributs_list(String n)
+    {
+        Vector<String> reponses=new Vector<>();
+        String[] tab=n.split("/");
+        for (int i=1;i<tab.length;i++)
+        {
+            reponses.add(tab[i]);
+        }
+        return reponses;
+    }
+
+    public static String getNomMethode(String n)
+    {
+        String[] tab=n.split("/");
+        return tab[0];
     }
 
     public String getClassName() {
@@ -29,4 +49,6 @@ public class Mapping {
     public void setMethod(String method) {
         Method = method;
     }
+
+
 }
