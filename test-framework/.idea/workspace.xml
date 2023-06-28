@@ -11,6 +11,7 @@
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/objets/Objet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/WEB-INF/lib/framework.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/WEB-INF/lib/framework.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/page.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -92,7 +93,7 @@
       <workItem from="1687807413044" duration="2568000" />
       <workItem from="1687811371066" duration="611000" />
       <workItem from="1687949391229" duration="579000" />
-      <workItem from="1687950281843" duration="5079000" />
+      <workItem from="1687950281843" duration="7453000" />
     </task>
     <servers />
   </component>

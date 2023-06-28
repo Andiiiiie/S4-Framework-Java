@@ -2,9 +2,10 @@ package objets;
 import etu1938.framework.ModelView;
 import etu1938.framework.File_class;
 import etu1938.framework.annotations.MappingUrl;
+import etu1938.framework.annotations.Singleton;
 
 import java.sql.Date;
-
+@Singleton
 public class Objet {
 
     Date date;
@@ -19,7 +20,7 @@ public class Objet {
     public ModelView save()
     {
         ModelView modelView=new ModelView("page.jsp");
-        modelView.addItem("saved",this);
+        modelView.addItem("saved",this.nombre);
         return modelView;
     }
 
