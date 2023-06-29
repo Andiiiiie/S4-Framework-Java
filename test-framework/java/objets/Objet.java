@@ -1,6 +1,8 @@
 package objets;
-import etu1938.framework.ModelView;
-import etu1938.framework.File_class;
+import etu1938.framework.annotations.User;
+import etu1938.framework.core.ModelView;
+import etu1938.framework.tools.Connexion;
+import etu1938.framework.tools.File_class;
 import etu1938.framework.annotations.MappingUrl;
 import etu1938.framework.annotations.Singleton;
 
@@ -17,6 +19,7 @@ public class Objet {
 
 
     @MappingUrl(method = "save")
+    @User(profil = "admin,test")
     public ModelView save()
     {
         ModelView modelView=new ModelView("page.jsp");
@@ -37,6 +40,20 @@ public class Objet {
         ModelView modelView=new ModelView("test_id.jsp");
         modelView.addItem("id",file.getName());
         return modelView;
+    }
+    @MappingUrl(method = "connect")
+    public ModelView test_connexion()
+    {
+        ModelView reps=new ModelView("page.jsp");
+        Connexion.login(reps,"admin");
+        return reps;
+    }
+    @MappingUrl(method = "deconnect")
+    public ModelView test_deconnexion()
+    {
+        ModelView reps=new ModelView("page.jsp");
+        Connexion.exit(reps);
+        return reps;
     }
 
 

@@ -1,4 +1,4 @@
-package etu1938.framework;
+package etu1938.framework.core;
 
 import java.util.List;
 import java.util.Vector;

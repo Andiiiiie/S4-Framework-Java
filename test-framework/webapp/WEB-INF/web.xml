@@ -11,6 +11,15 @@
             <param-name>PATH</param-name>
             <param-value>/home/andie/IdeaProjects/S4-Framework-Java/test-framework/java/objets</param-value>
         </init-param>
+        <init-param>
+            <param-name>nom_session</param-name>
+            <param-value>connecte</param-value>
+        </init-param>
+        <init-param>
+            <param-name>profiles</param-name>
+            <param-value>admin,profil1</param-value>
+        </init-param>
+
     </servlet>
 
     <servlet-mapping>
