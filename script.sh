@@ -4,10 +4,15 @@ tomcat_webapps="/home/andie/tomcat/webapps"
 # Compile framework
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotations/MappingUrl.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotations/Singleton.java
-javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/Mapping.java
-javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/File_class.java
-javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/ModelView.java
+javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotations/User.java
+javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/core/Mapping.java
+javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/core/ModelView.java
+javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/tools/File_class.java
 javac -parameters -cp "temp:$tomcat_libs" -d temp framework/java/etu1938/framework/servlet/FrontServlet.java
+javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/tools/Connexion.java
+
+
+
 # Framework Class -> jar
 jar --create --verbose --file test-framework/webapp/WEB-INF/lib/framework.jar -C temp .
 rm -rf temp

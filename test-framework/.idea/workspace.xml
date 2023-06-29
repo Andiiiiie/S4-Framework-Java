@@ -6,12 +6,15 @@
   <component name="ChangeListManager">
     <list default="true" id="7378c8b7-dfb0-456c-aa52-66450d79bbc6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../framework/README.md" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/README.md" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../framework/java/etu1938/framework/File_class.java" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/java/etu1938/framework/tools/File_class.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../framework/java/etu1938/framework/Mapping.java" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/java/etu1938/framework/core/Mapping.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../framework/java/etu1938/framework/ModelView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/java/etu1938/framework/core/ModelView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../framework/java/etu1938/framework/servlet/FrontServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/java/etu1938/framework/servlet/FrontServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../script.sh" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/objets/Objet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/WEB-INF/lib/framework.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/WEB-INF/lib/framework.jar" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/webapp/page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/page.jsp" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/webapp/WEB-INF/web.xml" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/WEB-INF/web.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -54,7 +57,7 @@
     &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
     &quot;SHARE_PROJECT_CONFIGURATION_FILES&quot;: &quot;true&quot;,
     &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
-    &quot;last_opened_file_path&quot;: &quot;/home/andie/IdeaProjects/S4-Framework-Java&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/andie/IdeaProjects/S4-Framework-Java/test-framework&quot;,
     &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
     &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
     &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
@@ -94,6 +97,9 @@
       <workItem from="1687811371066" duration="611000" />
       <workItem from="1687949391229" duration="579000" />
       <workItem from="1687950281843" duration="7453000" />
+      <workItem from="1687986358683" duration="12000" />
+      <workItem from="1687987203812" duration="1844000" />
+      <workItem from="1688044271687" duration="6842000" />
     </task>
     <servers />
   </component>

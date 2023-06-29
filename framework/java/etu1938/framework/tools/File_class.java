@@ -1,4 +1,4 @@
-package etu1938.framework;
+package etu1938.framework.tools;
 
 public class File_class {
     String name;

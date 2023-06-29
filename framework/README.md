@@ -31,5 +31,5 @@
 - renvoyer vers une page il faut creer une fonction qui retourn Modelview et annoter :
 ```@MappingUrl(method = "[le chemin pour appeler cette fonction exemple: save]") ```
 >NE PAS OUBLIER SES IMPORTS:<br>
-  ```import etu1938.framework.ModelView; ```<br>
+  ```import etu1938.framework.core.ModelView; ```<br>
   ```import etu1938.framework.annotations.MappingUrl; ```
