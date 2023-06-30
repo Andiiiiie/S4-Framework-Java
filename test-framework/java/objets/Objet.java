@@ -1,4 +1,5 @@
 package objets;
+import etu1938.framework.annotations.Session;
 import etu1938.framework.annotations.User;
 import etu1938.framework.core.ModelView;
 import etu1938.framework.tools.Connexion;
@@ -7,14 +8,26 @@ import etu1938.framework.annotations.MappingUrl;
 import etu1938.framework.annotations.Singleton;
 
 import java.sql.Date;
+import java.util.HashMap;
+
 @Singleton
 public class Objet {
 
     Date date;
     Integer nombre;
+
+    HashMap<String,Objet> session;
     public Objet()
     {
 
+    }
+    @MappingUrl(method = "test_session")
+    @Session
+    public ModelView test_session()
+    {
+        ModelView retour=new ModelView("sessions.jsp");
+        retour.addItem("sessions",getSession());
+        return retour;
     }
 
 
@@ -73,5 +86,13 @@ public class Objet {
 
     public void setNombre(Integer nombre) {
         this.nombre = nombre;
+    }
+
+    public HashMap<String, Objet> getSession() {
+        return session;
+    }
+
+    public void setSession(HashMap<String, Objet> session) {
+        this.session = session;
     }
 }

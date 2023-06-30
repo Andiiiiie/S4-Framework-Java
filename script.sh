@@ -4,6 +4,7 @@ tomcat_webapps="/home/andie/tomcat/webapps"
 # Compile framework
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotations/MappingUrl.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotations/Singleton.java
+javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotations/Session.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotations/User.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/core/Mapping.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/core/ModelView.java
