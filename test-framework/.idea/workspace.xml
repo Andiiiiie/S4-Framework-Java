@@ -6,8 +6,9 @@
   <component name="ChangeListManager">
     <list default="true" id="7378c8b7-dfb0-456c-aa52-66450d79bbc6" name="Changes" comment="">
       <change beforePath="$PROJECT_DIR$/../framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../framework/java/etu1938/framework/core/ModelView.java" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/java/etu1938/framework/core/ModelView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../framework/java/etu1938/framework/servlet/FrontServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/java/etu1938/framework/servlet/FrontServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../script.sh" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../framework/java/etu1938/framework/tools/Connexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/../framework/java/etu1938/framework/tools/Connexion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/objets/Objet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/webapp/WEB-INF/lib/framework.jar" beforeDir="false" afterPath="$PROJECT_DIR$/webapp/WEB-INF/lib/framework.jar" afterDir="false" />
@@ -100,6 +101,7 @@
       <workItem from="1688118479343" duration="2323000" />
       <workItem from="1688121347747" duration="1899000" />
       <workItem from="1688126218292" duration="95000" />
+      <workItem from="1688126457164" duration="4070000" />
     </task>
     <servers />
   </component>
