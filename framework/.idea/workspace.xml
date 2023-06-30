@@ -6,11 +6,8 @@
   <component name="ChangeListManager">
     <list default="true" id="4e63acd2-0c0b-4347-a25f-f34d7a80372a" name="Changes" comment="sprint6: envoie objet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/etu1938/framework/core/ModelView.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/etu1938/framework/core/ModelView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/etu1938/framework/servlet/FrontServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/etu1938/framework/servlet/FrontServlet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../script.sh" beforeDir="false" afterPath="$PROJECT_DIR$/../script.sh" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../test-framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../test-framework/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/../test-framework/java/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test-framework/java/objets/Objet.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -117,7 +114,7 @@
       <workItem from="1687986371688" duration="2938000" />
       <workItem from="1688044268926" duration="11649000" />
       <workItem from="1688118491804" duration="3961000" />
-      <workItem from="1688123890196" duration="962000" />
+      <workItem from="1688123890196" duration="1928000" />
     </task>
     <task id="LOCAL-00001" summary="sprint6: envoie objet">
       <created>1680602944674</created>
