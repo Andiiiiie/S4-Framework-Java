@@ -3,6 +3,7 @@ libs="/home/andie/IdeaProjects/S4-Framework-Java/test-framework/webapp/WEB-INF/l
 tomcat_webapps="/home/andie/tomcat/webapps"
 
 # Compile framework
+javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotations/Allowed.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotations/MappingUrl.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotations/Singleton.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotations/Session.java

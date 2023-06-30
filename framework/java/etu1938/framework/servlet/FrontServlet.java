@@ -1,17 +1,14 @@
 package etu1938.framework.servlet;
 
 import com.google.gson.Gson;
-import etu1938.framework.annotations.Session;
-import etu1938.framework.annotations.User;
+import etu1938.framework.annotations.*;
 import etu1938.framework.core.ModelView;
-import etu1938.framework.annotations.MappingUrl;
 import etu1938.framework.core.Mapping;
 import javax.servlet.*;
 import javax.servlet.annotation.MultipartConfig;
 import javax.servlet.http.*;
 
 import etu1938.framework.tools.File_class;
-import etu1938.framework.annotations.Singleton;
 
 import java.io.*;
 import java.security.Key;
@@ -292,56 +289,67 @@ public class FrontServlet extends HttpServlet {
 
                         }
                     }
-                    // Faites ce que vous souhaitez avec les parties multipart
-                }
 
-
-
-                ModelView mv = (ModelView) m.invoke(o,methodArgs);
-
-                if(getInstances().get(cl)!=null)
-                {
-                    clearObject(cl);
-                }
-
-                //ajouter toutes les sessions
-                for(Map.Entry<String, Object> entry :mv.getSession().entrySet()) {
-                    String key = entry.getKey();
-                    Object value = entry.getValue();
-                    if(value==null)
+                    if(m.isAnnotationPresent(Allowed.class))
                     {
-                        session.removeAttribute(key);
+                        ModelView mv = (ModelView) m.invoke(o,methodArgs);
+
+                        if(getInstances().get(cl)!=null)
+                        {
+                            clearObject(cl);
+                        }
+
+                        //ajouter toutes les sessions
+                        for(Map.Entry<String, Object> entry :mv.getSession().entrySet()) {
+                            String key = entry.getKey();
+                            Object value = entry.getValue();
+                            if(value==null)
+                            {
+                                session.removeAttribute(key);
+                            }
+                            else
+                            {
+                                session.setAttribute(key,value);
+                            }
+                        }
+                        if(mv.getJson())
+                        {
+                            Gson gson=new Gson();
+                            String json=gson.toJson(mv.getData());
+                            PrintWriter out=response.getWriter();
+                            out.println(json);
+                        }
+
+                        else
+                        {
+                            for(Map.Entry<String, Object> entry :mv.getData().entrySet()) {
+                                String key = entry.getKey();
+                                Object value = entry.getValue();
+                                request.setAttribute(key,value);
+                            }
+
+                            request.getRequestDispatcher(mv.getView()).forward(request, response);
+                        }
+
+
                     }
                     else
                     {
-                        session.setAttribute(key,value);
+                        response.getWriter().println("Cannot access this method");
                     }
                 }
-                if(mv.getJson())
-                {
-                    Gson gson=new Gson();
-                    String json=gson.toJson(mv.getData());
-                    PrintWriter out=response.getWriter();
-                    out.println(json);
-                }
-
                 else
                 {
-                    for(Map.Entry<String, Object> entry :mv.getData().entrySet()) {
-                        String key = entry.getKey();
-                        Object value = entry.getValue();
-                        request.setAttribute(key,value);
-                    }
-
-                    request.getRequestDispatcher(mv.getView()).forward(request, response);
+                    Object objet=m.invoke(o,methodArgs);
+                    Gson gson=new Gson();
+                    String json=gson.toJson(objet);
+                    response.getWriter().println(json);
                 }
+            }
 
 
-            }
-            else
-            {
-                response.getWriter().println("Cannot access this method");
-            }
+
+
 
         } catch (Exception e) {
             throw new RuntimeException(e);

@@ -1,11 +1,8 @@
 package objets;
-import etu1938.framework.annotations.Session;
-import etu1938.framework.annotations.User;
+import etu1938.framework.annotations.*;
 import etu1938.framework.core.ModelView;
 import etu1938.framework.tools.Connexion;
 import etu1938.framework.tools.File_class;
-import etu1938.framework.annotations.MappingUrl;
-import etu1938.framework.annotations.Singleton;
 
 import java.sql.Date;
 import java.util.HashMap;
@@ -28,6 +25,12 @@ public class Objet {
         ModelView retour=new ModelView("sessions.jsp");
         retour.addItem("sessions",getSession());
         return retour;
+    }
+    @MappingUrl(method = "test_fonction")
+    @Allowed
+    public String test_fonction()
+    {
+        return "metyyyy";
     }
 
     @MappingUrl(method = "test_json")
