@@ -1,4 +1,5 @@
 tomcat_libs="/home/andie/tomcat/lib/*"
+libs="/home/andie/IdeaProjects/S4-Framework-Java/test-framework/webapp/WEB-INF/lib/gson-2.10.1.jar"
 tomcat_webapps="/home/andie/tomcat/webapps"
 
 # Compile framework
@@ -9,7 +10,7 @@ javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/annotation
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/core/Mapping.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/core/ModelView.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/tools/File_class.java
-javac -parameters -cp "temp:$tomcat_libs" -d temp framework/java/etu1938/framework/servlet/FrontServlet.java
+javac -parameters -cp "temp:$tomcat_libs:$libs" -d temp framework/java/etu1938/framework/servlet/FrontServlet.java
 javac -parameters -cp "temp" -d temp framework/java/etu1938/framework/tools/Connexion.java
 
 
