@@ -30,6 +30,15 @@ public class Objet {
         return retour;
     }
 
+    @MappingUrl(method = "test_json")
+    public ModelView test_json()
+    {
+        ModelView m=new ModelView("no page");
+        m.setJson(true);
+        m.addItem("haha",1);
+        return m;
+    }
+
 
     @MappingUrl(method = "save")
     @User(profil = "admin,test")

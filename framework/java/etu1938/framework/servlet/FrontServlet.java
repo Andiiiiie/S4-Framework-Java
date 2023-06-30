@@ -1,5 +1,6 @@
 package etu1938.framework.servlet;
 
+import com.google.gson.Gson;
 import etu1938.framework.annotations.Session;
 import etu1938.framework.annotations.User;
 import etu1938.framework.core.ModelView;
@@ -302,11 +303,7 @@ public class FrontServlet extends HttpServlet {
                 {
                     clearObject(cl);
                 }
-                for(Map.Entry<String, Object> entry :mv.getData().entrySet()) {
-                    String key = entry.getKey();
-                    Object value = entry.getValue();
-                    request.setAttribute(key,value);
-                }
+
                 //ajouter toutes les sessions
                 for(Map.Entry<String, Object> entry :mv.getSession().entrySet()) {
                     String key = entry.getKey();
@@ -320,7 +317,25 @@ public class FrontServlet extends HttpServlet {
                         session.setAttribute(key,value);
                     }
                 }
-                request.getRequestDispatcher(mv.getView()).forward(request, response);
+                if(mv.getJson())
+                {
+                    Gson gson=new Gson();
+                    String json=gson.toJson(mv.getData());
+                    PrintWriter out=response.getWriter();
+                    out.println(json);
+                }
+
+                else
+                {
+                    for(Map.Entry<String, Object> entry :mv.getData().entrySet()) {
+                        String key = entry.getKey();
+                        Object value = entry.getValue();
+                        request.setAttribute(key,value);
+                    }
+
+                    request.getRequestDispatcher(mv.getView()).forward(request, response);
+                }
+
 
             }
             else
