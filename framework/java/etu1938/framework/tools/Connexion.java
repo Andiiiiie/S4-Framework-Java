@@ -20,8 +20,12 @@ public class Connexion {
         modelView.addSession(paramValue, profil);
     }
 
-    public static void exit(ModelView modelView)
+    public static void deconnect(ModelView modelView)
     {
-        modelView.deleteSession(FrontServlet.nom_session);
+        modelView.setInvalidateSession(true);
     }
+//    public static void exit(ModelView modelView)
+//    {
+//        modelView.deleteSession(FrontServlet.nom_session);
+//    }
 }

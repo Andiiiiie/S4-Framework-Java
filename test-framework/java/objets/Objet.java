@@ -18,14 +18,16 @@ public class Objet {
     {
 
     }
-    @MappingUrl(method = "test_session")
     @Session
+    @MappingUrl(method = "test_session")
     public ModelView test_session()
     {
         ModelView retour=new ModelView("sessions.jsp");
         retour.addItem("sessions",getSession());
         return retour;
     }
+
+
     @MappingUrl(method = "test_fonction")
     @Allowed
     public String test_fonction()
@@ -40,6 +42,22 @@ public class Objet {
         m.setJson(true);
         m.addItem("haha",1);
         return m;
+    }
+
+    @MappingUrl(method = "addSession")
+    public ModelView ajouterSession()
+    {
+        ModelView modelView=new ModelView("page.jsp");
+        modelView.addSession("aonaa","metyyy");
+        return modelView;
+    }
+
+    @MappingUrl(method = "supprimerSession")
+    public ModelView supprimer_session()
+    {
+        ModelView modelView=new ModelView("page.jsp");
+        modelView.addSessionToRemove("aonaa");
+        return modelView;
     }
 
 
@@ -77,7 +95,7 @@ public class Objet {
     public ModelView test_deconnexion()
     {
         ModelView reps=new ModelView("page.jsp");
-        Connexion.exit(reps);
+        Connexion.deconnect(reps);
         return reps;
     }
 

@@ -133,11 +133,16 @@ public class FrontServlet extends HttpServlet {
 
     public Boolean canAccess(Method method,String connecte)
     {
+        System.out.println("niditra tyyy");
+        if(method.isAnnotationPresent(User.class)==false)
+        {
+            return true;
+        }
         if (connecte==null && method.isAnnotationPresent(User.class))
         {
             return false;
         }
-        if(method.isAnnotationPresent(User.class))
+        if(connecte!=null && method.isAnnotationPresent(User.class))
         {
             User user=method.getAnnotation(User.class);
             String[] autorises=user.profil().split(",");
@@ -148,10 +153,6 @@ public class FrontServlet extends HttpServlet {
                     return true;
                 }
             }
-        }
-        else
-        {
-            return true;
         }
         return false;
     }
@@ -198,12 +199,11 @@ public class FrontServlet extends HttpServlet {
                 connecte = session.getAttribute(FrontServlet.getNom_session()).toString();
             }
 
-
-
             if(canAccess(m,connecte))
             {
                 if(m.isAnnotationPresent(Session.class))
                 {
+                    //ampiasa session ilay fonction
                     HashMap<String, Object> sessions=new HashMap<>();
                     Enumeration<String> liste_session=session.getAttributeNames();
                     while (liste_session.hasMoreElements())
@@ -211,11 +211,14 @@ public class FrontServlet extends HttpServlet {
                         String key=liste_session.nextElement();
                         Object object=session.getAttribute(key);
                         sessions.put(key,object);
-
                     }
                     Method method_call_session=o.getClass().getMethod("setSession",sessions.getClass());
                     method_call_session.invoke(o,sessions);
                 }
+
+
+
+                //maka arguements
                 Vector<String> liste_arguments=new Vector<>();
                 Parameter[] parameters = m.getParameters();
                 for (Parameter parameter : parameters) {
@@ -223,7 +226,7 @@ public class FrontServlet extends HttpServlet {
                     liste_arguments.add(argumentName);
                 }
 
-
+                //maka anle arguements entina miantso anle fonction
                 Object[] methodArgs = new Object[parameters.length];
                 int nb=0;
                 //get Parameter from form and call setters if object attribute
@@ -249,20 +252,20 @@ public class FrontServlet extends HttpServlet {
                             if(parameters[i].getName().equals(attribut))
                             {
                                 type=parameters[i].getType();
-                                //out.println("type:  "+type.getName());
                             }
                         }
                         methodArgs[nb]=this.casting(type,request.getParameter(attribut));
                         nb++;
                     }
                 }
-                // Obtenir les fichiers téléchargés à partir de la
+
+
+                //resaka file
                 String contentType1 = request.getContentType();
                 if (contentType1 != null && (contentType1.startsWith("multipart/form-data") || contentType1.startsWith("multipart/mixed"))) {
                     // La requête utilise le type de contenu multipart
                     Collection<Part> parts = request.getParts();
-                    if (parts.size()!=0)
-                    {
+                    if (parts.size() != 0) {
 
                         // Parcourir les objets Part correspondant aux fichiers téléchargés
                         for (Part part : parts) {
@@ -289,72 +292,65 @@ public class FrontServlet extends HttpServlet {
 
                         }
                     }
+                }
 
-                    if(m.isAnnotationPresent(Allowed.class))
-                    {
-                        ModelView mv = (ModelView) m.invoke(o,methodArgs);
 
-                        if(getInstances().get(cl)!=null)
-                        {
-                            clearObject(cl);
+
+                if (m.isAnnotationPresent(Allowed.class)) {
+                    Object objet = m.invoke(o, methodArgs);
+                    Gson gson = new Gson();
+                    String json = gson.toJson(objet);
+                    response.getWriter().println(json);
+                } else {
+                    ModelView mv = (ModelView) m.invoke(o, methodArgs);
+                    //verifications sessions
+                    if (mv.getInvalidateSession() == true) {
+                        session.invalidate();
+                    } else {
+                        List<String> to_remove = mv.getRemoveSession();
+                        for (String s : to_remove) {
+                            session.removeAttribute(s);
                         }
+                    }
 
-                        //ajouter toutes les sessions
-                        for(Map.Entry<String, Object> entry :mv.getSession().entrySet()) {
+                    if (getInstances().get(cl) != null) {
+                        clearObject(cl);
+                    }
+
+                    //ajouter toutes les sessions
+                    for (Map.Entry<String, Object> entry : mv.getSession().entrySet()) {
+                        String key = entry.getKey();
+                        Object value = entry.getValue();
+                        session.setAttribute(key, value);
+                    }
+                    if (mv.getJson() == true) {
+                        Gson gson = new Gson();
+                        String json = gson.toJson(mv.getData());
+                        PrintWriter out = response.getWriter();
+                        out.println(json);
+                    } else {
+                        for (Map.Entry<String, Object> entry : mv.getData().entrySet()) {
                             String key = entry.getKey();
                             Object value = entry.getValue();
-                            if(value==null)
-                            {
-                                session.removeAttribute(key);
-                            }
-                            else
-                            {
-                                session.setAttribute(key,value);
-                            }
-                        }
-                        if(mv.getJson())
-                        {
-                            Gson gson=new Gson();
-                            String json=gson.toJson(mv.getData());
-                            PrintWriter out=response.getWriter();
-                            out.println(json);
+                            request.setAttribute(key, value);
                         }
 
-                        else
-                        {
-                            for(Map.Entry<String, Object> entry :mv.getData().entrySet()) {
-                                String key = entry.getKey();
-                                Object value = entry.getValue();
-                                request.setAttribute(key,value);
-                            }
-
-                            request.getRequestDispatcher(mv.getView()).forward(request, response);
-                        }
-
-
+                        request.getRequestDispatcher(mv.getView()).forward(request, response);
                     }
-                    else
-                    {
-                        response.getWriter().println("Cannot access this method");
-                    }
-                }
-                else
-                {
-                    Object objet=m.invoke(o,methodArgs);
-                    Gson gson=new Gson();
-                    String json=gson.toJson(objet);
-                    response.getWriter().println(json);
                 }
             }
-
-
-
-
+            else
+            {
+                response.getWriter().println("Cannot access this method");
+            }
 
         } catch (Exception e) {
             throw new RuntimeException(e);
         }
     }
+
+
+
     public void clearObject(Class<?> cl) throws NoSuchFieldException, IllegalAccessException {
         Object o = getInstances().get(cl);
         Field[] fields = o.getClass().getDeclaredFields();
