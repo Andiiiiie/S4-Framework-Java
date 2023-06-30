@@ -1,5 +1,6 @@
 package etu1938.framework.servlet;
 
+import etu1938.framework.annotations.Session;
 import etu1938.framework.annotations.User;
 import etu1938.framework.core.ModelView;
 import etu1938.framework.annotations.MappingUrl;
@@ -203,6 +204,20 @@ public class FrontServlet extends HttpServlet {
 
             if(canAccess(m,connecte))
             {
+                if(m.isAnnotationPresent(Session.class))
+                {
+                    HashMap<String, Object> sessions=new HashMap<>();
+                    Enumeration<String> liste_session=session.getAttributeNames();
+                    while (liste_session.hasMoreElements())
+                    {
+                        String key=liste_session.nextElement();
+                        Object object=session.getAttribute(key);
+                        sessions.put(key,object);
+
+                    }
+                    Method method_call_session=o.getClass().getMethod("setSession",sessions.getClass());
+                    method_call_session.invoke(o,sessions);
+                }
                 Vector<String> liste_arguments=new Vector<>();
                 Parameter[] parameters = m.getParameters();
                 for (Parameter parameter : parameters) {
