@@ -45,6 +45,7 @@ public class Objet {
     }
 
     @MappingUrl(method = "addSession")
+    @Allowed
     public ModelView ajouterSession()
     {
         ModelView modelView=new ModelView("page.jsp");
@@ -53,6 +54,7 @@ public class Objet {
     }
 
     @MappingUrl(method = "supprimerSession")
+    @Allowed
     public ModelView supprimer_session()
     {
         ModelView modelView=new ModelView("page.jsp");
@@ -63,7 +65,7 @@ public class Objet {
 
     @MappingUrl(method = "save")
     @User(profil = "admin,test")
-    public ModelView save()
+    public ModelView save(String[] liste)
     {
         ModelView modelView=new ModelView("page.jsp");
         modelView.addItem("saved",this.nombre);

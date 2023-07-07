@@ -6,12 +6,11 @@
   <component name="ChangeListManager">
     <list default="true" id="4e63acd2-0c0b-4347-a25f-f34d7a80372a" name="Changes" comment="sprint6: envoie objet">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/etu1938/framework/core/ModelView.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/etu1938/framework/core/ModelView.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/java/etu1938/framework/servlet/FrontServlet.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/etu1938/framework/servlet/FrontServlet.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/java/etu1938/framework/tools/Connexion.java" beforeDir="false" afterPath="$PROJECT_DIR$/java/etu1938/framework/tools/Connexion.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../test-framework/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/../test-framework/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../test-framework/java/objets/Objet.java" beforeDir="false" afterPath="$PROJECT_DIR$/../test-framework/java/objets/Objet.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../test-framework/webapp/WEB-INF/lib/framework.jar" beforeDir="false" afterPath="$PROJECT_DIR$/../test-framework/webapp/WEB-INF/lib/framework.jar" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/../test-framework/webapp/page.jsp" beforeDir="false" afterPath="$PROJECT_DIR$/../test-framework/webapp/page.jsp" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -48,23 +47,23 @@
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
   </component>
-  <component name="PropertiesComponent"><![CDATA[{
-  "keyToString": {
-    "RunOnceActivity.OpenProjectViewOnStart": "true",
-    "RunOnceActivity.ShowReadmeOnStart": "true",
-    "WebServerToolWindowFactoryState": "false",
-    "last_opened_file_path": "/home/andie/Desktop/gson-2.10.1.jar",
-    "node.js.detected.package.eslint": "true",
-    "node.js.detected.package.tslint": "true",
-    "node.js.selected.package.eslint": "(autodetect)",
-    "node.js.selected.package.tslint": "(autodetect)",
-    "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Libraries",
-    "project.structure.proportion": "0.0",
-    "project.structure.side.proportion": "0.2",
-    "vue.rearranger.settings.migration": "true"
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;last_opened_file_path&quot;: &quot;/home/andie/IdeaProjects/S4-Framework-Java/framework&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;nodejs_package_manager_path&quot;: &quot;npm&quot;,
+    &quot;project.structure.last.edited&quot;: &quot;Libraries&quot;,
+    &quot;project.structure.proportion&quot;: &quot;0.0&quot;,
+    &quot;project.structure.side.proportion&quot;: &quot;0.2&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
   }
-}]]></component>
+}</component>
   <component name="RunManager">
     <configuration name="Main" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="Main" />
@@ -119,6 +118,10 @@
       <workItem from="1688044268926" duration="11649000" />
       <workItem from="1688118491804" duration="3961000" />
       <workItem from="1688123890196" duration="7672000" />
+      <workItem from="1688132233738" duration="3923000" />
+      <workItem from="1688156475033" duration="5226000" />
+      <workItem from="1688768761730" duration="12000" />
+      <workItem from="1688768782156" duration="876000" />
     </task>
     <task id="LOCAL-00001" summary="sprint6: envoie objet">
       <created>1680602944674</created>
