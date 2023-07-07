@@ -112,9 +112,25 @@ public class FrontServlet extends HttpServlet {
         return "set"+capitalizedStr;
     }
 
-    public Object casting(Class type,String string)
+    public Object casting(Class type,Object string)
     {
         Object objet=null;
+        if(type.isArray())
+        {
+            System.out.println("tato tableau  "+ Array.getLength(string));
+            // Get the type of the array
+            Class<?> arrayType = type.getComponentType();
+            // Create a new array with the same length as the value
+            Object array = Array.newInstance(arrayType, Array.getLength(string));
+            // For each element in the value, cast it to the array type and add it to the array
+            for (int i = 0; i < Array.getLength(string); i++) {
+                System.out.println("misy eeeeee");
+                Array.set(array, i, casting(arrayType, Array.get(string, i)));
+            }
+            return array;
+        }
+        else
+        {
             //regarder si cet objet a un constructeur qui recoit
             try {
                 Constructor constructor=type.getConstructor(String.class);
@@ -127,21 +143,23 @@ public class FrontServlet extends HttpServlet {
                 }
 
             }
-
+        }
         return objet;
     }
 
     public Boolean canAccess(Method method,String connecte)
     {
-        System.out.println("niditra tyyy");
+        //raha ohatra ka tsisy annotation oe mila autorisation dia tonga dia accessible
         if(method.isAnnotationPresent(User.class)==false)
         {
             return true;
         }
+        //raha ohatra k tsisy connecte nefa mila autilisation dia tsy accesible
         if (connecte==null && method.isAnnotationPresent(User.class))
         {
             return false;
         }
+        //jerena oe accessible ho anle connecte ve izy
         if(connecte!=null && method.isAnnotationPresent(User.class))
         {
             User user=method.getAnnotation(User.class);
@@ -234,6 +252,7 @@ public class FrontServlet extends HttpServlet {
                 while (liste.hasMoreElements())
                 {
                     String attribut=liste.nextElement();
+                    System.out.println(attribut);
                     if(isAttribute(cl,attribut))
                     {
                         Field field=cl.getDeclaredField(attribut);
@@ -242,7 +261,15 @@ public class FrontServlet extends HttpServlet {
                         {
                             throw new RuntimeException("ERROR WHILE CASTING");
                         }
-                        temp.invoke(o,this.casting(field.getType(),request.getParameter(attribut)));
+                        if(field.getType().isArray())
+                        {
+                            temp.invoke(o,this.casting(field.getType(),request.getParameterValues(attribut)));
+                        }
+                        else
+                        {
+                            temp.invoke(o,this.casting(field.getType(),request.getParameter(attribut)));
+                        }
+
                     }
                     if( liste_arguments.contains(attribut))
                     {
@@ -254,7 +281,14 @@ public class FrontServlet extends HttpServlet {
                                 type=parameters[i].getType();
                             }
                         }
-                        methodArgs[nb]=this.casting(type,request.getParameter(attribut));
+                        if(type.isArray())
+                        {
+                            methodArgs[nb]=this.casting(type,request.getParameterValues(attribut));
+                        }
+                        else
+                        {
+                            methodArgs[nb]=this.casting(type,request.getParameter(attribut));
+                        }
                         nb++;
                     }
                 }
